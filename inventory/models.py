@@ -4,12 +4,10 @@ from django.core.validators import MinValueValidator
 class Product(models.Model):
     name = models.CharField(max_length=255)
 
-    # Unique SKU is very important in inventory systems
-    sku = models.CharField(max_length=100, unique=True)
+    sku = models.CharField(max_length=100, unique=True)#uniqueness
 
-    # Prevent negative stock at database + application level
     quantity = models.IntegerField(
-        validators=[MinValueValidator(0)]
+        validators=[MinValueValidator(0)]#minvalue validation
     )
 
     price = models.DecimalField(
