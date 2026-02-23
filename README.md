@@ -2,7 +2,7 @@
 
 ## Tech Stack
 
-- Python 3.11+
+- Python 3.14+
 - Django
 - PostgreSQL
 - uv package manager
