@@ -61,7 +61,7 @@ python manage.py migrate
 ## Start Dev Server
 
 ```bash
-python manage.py runserver
+uv run python manage.py runserver
 ```
 
 ---
