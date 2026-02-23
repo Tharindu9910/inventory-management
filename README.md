@@ -52,8 +52,8 @@ GRANT ALL ON SCHEMA public TO inventory_user;
 Run the following commands:
 
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+uv run python manage.py makemigrations
+uv run python manage.py migrate
 ```
 
 ---
