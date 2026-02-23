@@ -1,7 +1,71 @@
-<h1>Product Form</h1>
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <h1>Product Form</h1>
 
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Save</button>
-</form>
+</form> -->
+
+
+<div class="max-w-4xl mx-auto mt-12">
+    <div class="bg-white shadow-md rounded-2xl p-10 border border-gray-100">
+
+        <div class="mb-8">
+            <h2 class="text-3xl font-bold text-gray-800">
+                {% if form.instance.pk %}
+                    Update Product
+                {% else %}
+                    Add Product
+                {% endif %}
+            </h2>
+        </div>
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-6">
+                
+                <label class="text-sm font-medium text-gray-700">
+                    {{ field.label }}
+                </label>
+    
+                <div class="md:col-span-2">
+                    {{ field }}
+    
+                    {% if field.help_text %}
+                        <p class="text-xs text-gray-400 mt-1">
+                            {{ field.help_text }}
+                        </p>
+                    {% endif %}
+    
+                    {% if field.errors %}
+                        <p class="text-red-500 text-sm mt-1">
+                            {{ field.errors.0 }}
+                        </p>
+                    {% endif %}
+                </div>
+    
+            </div>
+        {% endfor %}
+
+            <div class="mt-2 flex justify-end gap-4 items-center">
+                <a href="{% url 'product-list' %}"
+                class="px-5 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition">
+                Cancel
+                </a>
+
+                <button type="submit"
+                    class="px-6 py-2 rounded-lg bg-gray-700 hover:bg-gray-800 text-white font-semibold shadow-md hover:shadow-lg transition duration-200">
+                    Save Changes
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

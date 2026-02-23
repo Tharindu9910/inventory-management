@@ -4,8 +4,25 @@ from .models import Product
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ["name", "sku", "quantity", "price"]
-
+        fields = ["name", "sku","quantity", "price"]
+        
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "class": "w-full rounded-md border border-gray-300 px-4 py-1 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none transition",
+                "placeholder": "Enter product name"
+            }),
+            "sku": forms.TextInput(attrs={
+                "class": "w-full rounded-md border border-gray-300 px-4 py-1 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none transition",
+                "placeholder": "SKU"            }),
+            "quantity": forms.NumberInput(attrs={
+                "class": "w-full rounded-md border border-gray-300 px-4 py-1 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none transition",
+                "placeholder": "Enter quantity"
+            }),
+            "price": forms.NumberInput(attrs={
+                "class": "w-full rounded-md border border-gray-300 px-4 py-1 text-sm focus:ring-1 focus:ring-blue-500 focus:outline-none transition",
+                "placeholder": "Enter price"
+            }),
+        }
     # Prevent negative quantity
     def clean_quantity(self):
         quantity = self.cleaned_data.get("quantity")

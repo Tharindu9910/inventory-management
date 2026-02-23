@@ -15,7 +15,6 @@ class ProductListView(ListView):
     context_object_name = "products"
     ordering = ["-created_at"]
 
-
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
